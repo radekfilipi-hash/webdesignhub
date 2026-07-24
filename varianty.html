@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WebDesignHub — výběr pozadí</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:'Inter',sans-serif; background:#0a0b12; color:#eef0f8; padding:40px 20px 80px; }
+  .head{ max-width:1100px; margin:0 auto 34px; text-align:center; }
+  .head h1{ font-family:'Sora',sans-serif; font-size:2rem; margin-bottom:10px; }
+  .head p{ color:#9aa1bd; }
+  .grid{ max-width:1100px; margin:0 auto; display:grid; gap:26px; }
+  .variant{ border-radius:20px; overflow:hidden; border:1px solid #262b40; box-shadow:0 30px 60px -30px rgba(0,0,0,.8); }
+  .banner{ position:relative; min-height:360px; display:flex; flex-direction:column; justify-content:center; padding:48px 46px; background-size:cover; background-position:center; }
+  /* dark overlay for legibility */
+  .banner::before{ content:""; position:absolute; inset:0;
+    background:linear-gradient(105deg, rgba(10,11,18,.94) 0%, rgba(10,11,18,.7) 42%, rgba(10,11,18,.35) 100%),
+               radial-gradient(60% 80% at 15% 50%, rgba(109,92,255,.28), transparent 60%); }
+  .banner > *{ position:relative; z-index:1; }
+  .tag{ display:inline-flex; align-items:center; gap:8px; align-self:flex-start; padding:7px 15px; border-radius:999px;
+    border:1px solid #ffffff22; background:#ffffff0d; font-size:.82rem; color:#c9cde6; margin-bottom:18px; backdrop-filter:blur(6px); }
+  .banner h2{ font-family:'Sora',sans-serif; font-weight:800; font-size:clamp(1.7rem,3.6vw,2.9rem); line-height:1.1; letter-spacing:-.02em; max-width:640px; }
+  .banner .grad{ background:linear-gradient(100deg,#8b7bff,#c084fc 50%,#22d3ee); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .banner p{ color:#c9cde6; margin-top:16px; max-width:520px; font-size:1.02rem; }
+  .meta{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    padding:16px 22px; background:#10121d; border-top:1px solid #1c2033; }
+  .meta strong{ font-family:'Sora',sans-serif; }
+  .meta span{ color:#6b7095; font-size:.9rem; }
+  .pick{ font-family:'Sora',sans-serif; font-weight:600; font-size:.9rem; padding:9px 18px; border-radius:999px;
+    color:#fff; background:linear-gradient(100deg,#6d5cff,#a855f7); }
+</style>
+</head>
+<body>
+  <div class="head">
+    <h1>Vyber si pozadí heru</h1>
+    <p>Každá varianta je s finálním tmavým překryvem a textem — takhle to bude vypadat naživo. Napiš mi číslo, které chceš.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <script>
+    const items = [
+      { id:1, file:'abstract1', label:'Abstraktní / tech', note:'Tmavá abstraktní grafika' },
+      { id:2, file:'abstract2', label:'Abstraktní / tech', note:'Barevná gradientní struktura' },
+      { id:3, file:'abstract3', label:'Abstraktní / tech', note:'Tmavá tech textura' },
+      { id:4, file:'desk1',     label:'Pracovní stůl',     note:'Kreativní pracoviště' },
+      { id:5, file:'desk2',     label:'Pracovní stůl',     note:'Setup s obrazovkami' },
+      { id:6, file:'desk3',     label:'Pracovní stůl',     note:'Design na monitoru' },
+    ];
+    document.getElementById('grid').innerHTML = items.map(i => `
+      <div class="variant">
+        <div class="banner" style="background-image:url('assets/img/${i.file}.jpg')">
+          <span class="tag">● Varianta ${i.id} — ${i.label}</span>
+          <h2>Web, který vám <span class="grad">přivede zákazníky</span> a ušetří desítky hodin práce</h2>
+          <p>Ukázka finálního vzhledu heru s touto fotkou v pozadí.</p>
+        </div>
+        <div class="meta">
+          <span>${i.note} · soubor <strong>${i.file}.jpg</strong></span>
+          <span class="pick">Chci variantu ${i.id}</span>
+        </div>
+      </div>
+    `).join('');
+  </script>
+</body>
+</html>
