@@ -151,6 +151,7 @@ const cio = new IntersectionObserver((entries) => {
     if (!e.isIntersecting) return;
     const el = e.target;
     const target = +el.dataset.count;
+    if (Number.isNaN(target)) { cio.unobserve(el); return; }
     const dur = 1400, start = performance.now();
     const tick = (now) => {
       const p = Math.min((now - start) / dur, 1);
