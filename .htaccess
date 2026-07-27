@@ -1,0 +1,24 @@
+# Statický web webdesignhub.cz — konfigurace docrootu
+# Výchozí stránka je statické index.html (ne WordPress index.php)
+DirectoryIndex index.html
+
+# Vypnout WordPress přepisování URL (web je čistě statický)
+<IfModule mod_rewrite.c>
+  RewriteEngine Off
+</IfModule>
+
+# Nevypisovat obsah složek
+Options -Indexes
+
+# Skrýt/zablokovat zbytky staré WordPress instalace
+RedirectMatch 404 ^/(wp-.*|index\.php|xmlrpc\.php|readme\.html|license\.txt|install\.log)
+
+# Drobné cache hlavičky pro statická aktiva
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+</IfModule>

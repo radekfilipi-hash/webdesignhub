@@ -165,15 +165,38 @@ const cio = new IntersectionObserver((entries) => {
 }, { threshold: 0.6 });
 counters.forEach(c => cio.observe(c));
 
-// ===== Contact form (demo submit) =====
+// ===== Contact form (Web3Forms) =====
 const form = document.getElementById('poptavka');
 const ok = document.getElementById('formOk');
-form.addEventListener('submit', (e) => {
+const err = document.getElementById('formErr');
+const submitBtn = form.querySelector('button[type="submit"]');
+const submitLabel = submitBtn.textContent;
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (!form.checkValidity()) { form.reportValidity(); return; }
-  ok.hidden = false;
-  form.querySelector('button[type="submit"]').textContent = 'Odesláno ✓';
-  form.querySelectorAll('input, textarea').forEach(f => (f.value = ''));
+  ok.hidden = true; if (err) err.hidden = true;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Odesílám…';
+  try {
+    const payload = Object.fromEntries(new FormData(form).entries());
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.success) {
+      ok.hidden = false;
+      submitBtn.textContent = 'Odesláno ✓';
+      form.querySelectorAll('input:not([type=hidden]):not([type=checkbox]), textarea').forEach(f => (f.value = ''));
+    } else {
+      throw new Error(data.message || 'error');
+    }
+  } catch (_) {
+    if (err) err.hidden = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = submitLabel;
+  }
 });
 
 // ===== Year =====

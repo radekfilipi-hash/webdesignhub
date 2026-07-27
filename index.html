@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebDesignHub — Weby, které přivádějí zákazníky</title>
   <meta name="description" content="Weby a e-shopy pro malé firmy a živnostníky jako služba — hosting, správa i podpora za pevnou měsíční cenu. Nezávazný návrh zdarma. Už od 499 Kč/měsíc." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -257,6 +262,10 @@
         </ul>
       </div>
       <form class="form reveal" id="poptavka" novalidate>
+        <input type="hidden" name="access_key" value="7fbe71dc-7d8c-4387-b674-94c24d8f2ee4" />
+        <input type="hidden" name="subject" value="Nová poptávka z webu WebDesignHub" />
+        <input type="hidden" name="from_name" value="WebDesignHub — web" />
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
         <div class="field">
           <label for="jmeno">Jméno</label>
           <input id="jmeno" name="jmeno" type="text" placeholder="Jan Novák" required />
@@ -276,6 +285,7 @@
         <button type="submit" class="btn btn--primary btn--block btn--lg">Odeslat poptávku</button>
         <p class="form__note">Odesláním souhlasíte se zpracováním údajů za účelem odpovědi na poptávku.</p>
         <p class="form__ok" id="formOk" hidden>Díky! Zpráva odešla — ozveme se do 24 hodin. 🎉</p>
+        <p class="form__err" id="formErr" hidden style="color:#ff6b6b">Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo nám napište přímo na e-mail.</p>
       </form>
     </div>
   </section>
@@ -308,6 +318,6 @@
     </div>
   </footer>
 
-  <script src="assets/main.js"></script>
+  <script src="assets/main.js?v=2"></script>
 </body>
 </html>
