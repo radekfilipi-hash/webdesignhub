@@ -2,16 +2,24 @@
 # Výchozí stránka je statické index.html (ne WordPress index.php)
 DirectoryIndex index.html
 
-# Vypnout WordPress přepisování URL (web je čistě statický)
-<IfModule mod_rewrite.c>
-  RewriteEngine Off
-</IfModule>
-
 # Nevypisovat obsah složek
 Options -Indexes
 
 # Skrýt/zablokovat zbytky staré WordPress instalace
-RedirectMatch 404 ^/(wp-.*|index\.php|xmlrpc\.php|readme\.html|license\.txt|install\.log)
+RedirectMatch 404 ^/(wp-.*|xmlrpc\.php|readme\.html|license\.txt|install\.log)
+
+# Staré WordPress URL (blog/články) 301 přesměrovat na homepage.
+# Catch-all: cokoli, co není reálný soubor ani složka, pošli na / (kód 301).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # nechat existující soubory a složky (index.html, robots.txt, sitemap.xml, assets/…)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  # nepřesměrovávat samotnou homepage (jinak smyčka)
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteRule ^ / [R=301,L]
+</IfModule>
 
 # Drobné cache hlavičky pro statická aktiva
 <IfModule mod_expires.c>

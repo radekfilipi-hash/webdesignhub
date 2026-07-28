@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /varianty.html
+
+Sitemap: https://webdesignhub.cz/sitemap.xml
