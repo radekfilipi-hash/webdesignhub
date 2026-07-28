@@ -375,3 +375,25 @@ a{ color:inherit; text-decoration:none; }
 @media (min-width:1600px){ :root{ --maxw:1360px; } }
 @media (min-width:2000px){ :root{ --maxw:1520px; } }
 @media (min-width:2560px){ :root{ --maxw:1720px; } }
+
+/* ===== Cookie lišta ===== */
+.cookie{
+  position:fixed; left:16px; right:16px; bottom:16px; z-index:120;
+  max-width:720px; margin-inline:auto;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  padding:16px 20px;
+  background:var(--surface-2); border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:0 20px 50px -12px rgba(0,0,0,.6);
+  backdrop-filter:blur(10px);
+  animation:cookieUp .45s var(--ease) both;
+}
+.cookie[hidden]{ display:none; }
+.cookie__text{ flex:1 1 320px; font-size:.9rem; color:var(--muted); line-height:1.55; }
+.cookie__btns{ display:flex; gap:10px; margin-left:auto; }
+@keyframes cookieUp{ from{ opacity:0; transform:translateY(20px); } to{ opacity:1; transform:none; } }
+@media (max-width:520px){
+  .cookie{ flex-direction:column; align-items:stretch; text-align:left; }
+  .cookie__btns{ margin-left:0; }
+  .cookie__btns .btn{ flex:1; }
+}

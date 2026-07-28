@@ -201,3 +201,26 @@ form.addEventListener('submit', async (e) => {
 
 // ===== Year =====
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// ===== Cookie souhlas (Google Consent Mode v2) =====
+(() => {
+  const bar = document.getElementById('cookie');
+  if (!bar) return;
+  let stored = null;
+  try { stored = localStorage.getItem('wdh_consent'); } catch (e) {}
+  if (!stored) bar.hidden = false; // ukázat jen když ještě nerozhodnuto
+
+  const decide = (granted) => {
+    try { localStorage.setItem('wdh_consent', granted ? 'granted' : 'denied'); } catch (e) {}
+    if (granted && typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted', 'ad_user_data': 'granted',
+        'ad_personalization': 'granted', 'analytics_storage': 'granted'
+      });
+    }
+    bar.hidden = true;
+  };
+
+  document.getElementById('cookieAccept')?.addEventListener('click', () => decide(true));
+  document.getElementById('cookieDecline')?.addEventListener('click', () => decide(false));
+})();
