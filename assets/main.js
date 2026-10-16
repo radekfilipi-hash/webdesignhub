@@ -4,7 +4,8 @@ const finePointer = window.matchMedia('(pointer: fine)').matches;
 // ===== Particle network canvas =====
 (() => {
   const canvas = document.getElementById('fx');
-  if (!canvas || reduceMotion) return;
+  // jen desktop s myší — na dotyku (mobil/tablet) síť vypnutá (výkon + stejně nereaguje)
+  if (!canvas || reduceMotion || !finePointer) return;
   const ctx = canvas.getContext('2d');
   let w, h, dpr, particles = [];
   const mouse = { x: -9999, y: -9999 };
@@ -15,7 +16,7 @@ const finePointer = window.matchMedia('(pointer: fine)').matches;
     h = canvas.height = innerHeight * dpr;
     canvas.style.width = innerWidth + 'px';
     canvas.style.height = innerHeight + 'px';
-    const count = Math.min(90, Math.floor((innerWidth * innerHeight) / 16000));
+    const count = Math.min(60, Math.floor((innerWidth * innerHeight) / 20000));
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
