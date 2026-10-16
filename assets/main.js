@@ -199,6 +199,22 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
+// ===== Billing toggle (měsíčně / ročně) =====
+(() => {
+  const toggle = document.getElementById('billingToggle');
+  if (!toggle) return;
+  const opts = [...toggle.querySelectorAll('.billing__opt')];
+  const fields = [...document.querySelectorAll('.pricing [data-m]')];
+  const apply = (bill) => {
+    const key = bill === 'a' ? 'a' : 'm';
+    fields.forEach((el) => { const v = el.dataset[key]; if (v !== undefined) el.textContent = v; });
+    opts.forEach((o) => o.classList.toggle('is-active', o.dataset.bill === bill));
+  };
+  opts.forEach((o) => o.addEventListener('click', () => apply(o.dataset.bill)));
+  const active = toggle.querySelector('.billing__opt.is-active');
+  apply(active ? active.dataset.bill : 'a');
+})();
+
 // ===== Year =====
 document.getElementById('year').textContent = new Date().getFullYear();
 

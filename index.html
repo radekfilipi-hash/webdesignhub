@@ -272,14 +272,28 @@
     <div class="container">
       <div class="section__head reveal">
         <span class="eyebrow">Ceník</span>
-        <h2>Web jako služba, jasná měsíční cena</h2>
-        <p class="section__sub">Nejdřív vám <strong>zdarma připravíme návrh</strong> — a teprve když se vám bude líbit, rozjedeme spolupráci. Pak platíte jednu přehlednou měsíční cenu: web i služby okolo v jedné platbě.</p>
+        <h2>Web jako služba — jedna cena, žádné starosti</h2>
+        <p class="section__sub">Nejdřív vám <strong>zdarma připravíme návrh</strong> — a teprve když se vám bude líbit, rozjedeme spolupráci. Pak platíte jednu přehlednou cenu a o web i vše kolem se staráme my. Při <strong>roční platbě ušetříte 20 %</strong>.</p>
       </div>
+
+      <div class="billing reveal">
+        <div class="billing__toggle" id="billingToggle" role="group" aria-label="Způsob platby">
+          <button type="button" class="billing__opt" data-bill="m">Měsíčně</button>
+          <button type="button" class="billing__opt is-active" data-bill="a">Ročně <span class="billing__save">ušetříte 20 %</span></button>
+        </div>
+      </div>
+
       <div class="pricing">
         <article class="plan reveal">
           <h3 class="plan__name">Jednostránkový web</h3>
           <p class="plan__desc">Rychlý one-page web, který funguje a stará se sám o sebe.</p>
-          <div class="plan__price"><span class="plan__from">od</span> 499 <span class="plan__cur">Kč</span><span class="plan__per">/ měsíc</span></div>
+          <div class="plan__price">
+            <span class="plan__from">od</span>
+            <span class="plan__amt" data-m="625" data-a="499">499</span>
+            <span class="plan__cur">Kč</span>
+            <span class="plan__per">/ měsíc</span>
+          </div>
+          <p class="plan__bill" data-m="účtováno měsíčně" data-a="účtováno ročně · ušetříte 20 %">účtováno ročně · ušetříte 20 %</p>
           <ul class="plan__list">
             <li>Webhosting v ceně</li>
             <li>Doména v ceně</li>
@@ -294,7 +308,13 @@
           <span class="plan__tag">Nejoblíbenější</span>
           <h3 class="plan__name">Vícestránkový web</h3>
           <p class="plan__desc">Web o více stránkách pro firmy, které to myslí vážně.</p>
-          <div class="plan__price"><span class="plan__from">od</span> 999 <span class="plan__cur">Kč</span><span class="plan__per">/ měsíc</span></div>
+          <div class="plan__price">
+            <span class="plan__from">od</span>
+            <span class="plan__amt" data-m="1 250" data-a="999">999</span>
+            <span class="plan__cur">Kč</span>
+            <span class="plan__per">/ měsíc</span>
+          </div>
+          <p class="plan__bill" data-m="účtováno měsíčně" data-a="účtováno ročně · ušetříte 20 %">účtováno ročně · ušetříte 20 %</p>
           <ul class="plan__list">
             <li>Vše z Jednostránkového webu</li>
             <li>Kontaktní formulář</li>
@@ -308,7 +328,13 @@
         <article class="plan reveal">
           <h3 class="plan__name">E-shop</h3>
           <p class="plan__desc">Prodávejte online — platby, doprava i správa objednávek.</p>
-          <div class="plan__price"><span class="plan__from">od</span> 2 990 <span class="plan__cur">Kč</span><span class="plan__per">/ měsíc</span></div>
+          <div class="plan__price">
+            <span class="plan__from">od</span>
+            <span class="plan__amt" data-m="3 750" data-a="2 990">2 990</span>
+            <span class="plan__cur">Kč</span>
+            <span class="plan__per">/ měsíc</span>
+          </div>
+          <p class="plan__bill" data-m="účtováno měsíčně" data-a="účtováno ročně · ušetříte 20 %">účtováno ročně · ušetříte 20 %</p>
           <ul class="plan__list">
             <li>Vše z Vícestránkového webu</li>
             <li>Online platby a doprava</li>
@@ -322,6 +348,7 @@
           <h3 class="plan__name">Individuální řešení</h3>
           <p class="plan__desc">Máte specifické potřeby? Připravíme řešení přesně na míru.</p>
           <div class="plan__price plan__price--custom"><span class="plan__from">cena</span> dle dohody</div>
+          <p class="plan__bill">podle rozsahu — domluvíme se</p>
           <ul class="plan__list">
             <li>Rozsah přesně dle vašich potřeb</li>
             <li>Napojení na systémy třetích stran</li>
@@ -331,6 +358,8 @@
           <a href="#kontakt" class="btn btn--ghost btn--block">Mám zájem</a>
         </article>
       </div>
+
+      <p class="pricing__note reveal">💡 <strong>Žádné starosti navíc</strong> — hosting, doménu, SSL, aktualizace i zálohy máte v ceně a staráme se o ně my. Chcete web raději vlastnit jednorázově? <a href="#kontakt">Ozvěte se</a> a připravíme nabídku na míru.</p>
     </div>
   </section>
 
