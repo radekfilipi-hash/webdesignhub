@@ -48,18 +48,18 @@ body{
   background-size:64px 64px;
   -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 72%);
   mask-image:radial-gradient(120% 90% at 50% 0%, #000 20%, transparent 72%);
-  animation:gridPan 28s linear infinite;
+  /* mřížka staticky kvůli výkonu (animace background-position sekala) */
 }
 @keyframes gridPan{ to{ background-position:64px 64px, 64px 64px; } }
 
 /* drifting aurora blobs */
 .bg__aurora{ border-radius:50%; filter:blur(70px); opacity:.55; mix-blend-mode:screen; will-change:transform; }
 .bg__aurora--1{ width:640px; height:640px; top:-160px; left:-120px;
-  background:radial-gradient(circle, #6d5cff, transparent 65%); animation:drift1 24s ease-in-out infinite; }
+  background:radial-gradient(circle, #6d5cff, transparent 65%); }
 .bg__aurora--2{ width:560px; height:560px; top:-60px; right:-140px;
-  background:radial-gradient(circle, #a855f7, transparent 65%); animation:drift2 30s ease-in-out infinite; }
+  background:radial-gradient(circle, #a855f7, transparent 65%); }
 .bg__aurora--3{ width:520px; height:520px; bottom:-200px; left:40%;
-  background:radial-gradient(circle, #22d3ee, transparent 65%); opacity:.4; animation:drift3 34s ease-in-out infinite; }
+  background:radial-gradient(circle, #22d3ee, transparent 65%); opacity:.4; }
 @keyframes drift1{ 50%{ transform:translate(140px,90px) scale(1.15); } }
 @keyframes drift2{ 50%{ transform:translate(-120px,120px) scale(1.1); } }
 @keyframes drift3{ 50%{ transform:translate(80px,-90px) scale(1.2); } }
