@@ -30,7 +30,7 @@ const finePointer = window.matchMedia('(pointer: fine)').matches;
   addEventListener('mousemove', (e) => { mouse.x = e.clientX * dpr; mouse.y = e.clientY * dpr; });
   addEventListener('mouseout', () => { mouse.x = mouse.y = -9999; });
 
-  const LINK = 130, LINK_M = 170;
+  const LINK = 130, LINK2 = LINK * LINK, LINK_M = 170, LINK_M2 = LINK_M * LINK_M;
   const draw = () => {
     ctx.clearRect(0, 0, w, h);
     for (const p of particles) {
@@ -38,8 +38,9 @@ const finePointer = window.matchMedia('(pointer: fine)').matches;
       if (p.x < 0 || p.x > w) p.vx *= -1;
       if (p.y < 0 || p.y > h) p.vy *= -1;
 
-      const dm = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-      if (dm < 150 * dpr) { p.x += (p.x - mouse.x) / dm * 0.6; p.y += (p.y - mouse.y) / dm * 0.6; }
+      const mx = p.x - mouse.x, my = p.y - mouse.y;
+      const dm = Math.sqrt(mx * mx + my * my);
+      if (dm < 150 * dpr) { p.x += mx / dm * 0.6; p.y += my / dm * 0.6; }
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -50,23 +51,40 @@ const finePointer = window.matchMedia('(pointer: fine)').matches;
       const a = particles[i];
       for (let j = i + 1; j < particles.length; j++) {
         const b = particles[j];
-        const d = Math.hypot(a.x - b.x, a.y - b.y) / dpr;
-        if (d < LINK) {
+        const dx = (a.x - b.x) / dpr, dy = (a.y - b.y) / dpr;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < LINK2) {
+          const d = Math.sqrt(d2);
           ctx.strokeStyle = `rgba(120,110,220,${(1 - d / LINK) * 0.28})`;
           ctx.lineWidth = dpr;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
-      const dm = Math.hypot(a.x - mouse.x, a.y - mouse.y) / dpr;
-      if (dm < LINK_M) {
+      const mx = (a.x - mouse.x) / dpr, my = (a.y - mouse.y) / dpr;
+      const dm2 = mx * mx + my * my;
+      if (dm2 < LINK_M2) {
+        const dm = Math.sqrt(dm2);
         ctx.strokeStyle = `rgba(34,211,238,${(1 - dm / LINK_M) * 0.5})`;
         ctx.lineWidth = dpr;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
       }
     }
-    requestAnimationFrame(draw);
   };
-  draw();
+
+  // běží jen když je hero vidět a záložka aktivní (jinak při scrollu zbytečně žere výkon)
+  let running = false, visible = true, inView = true;
+  const tick = () => { if (!running) return; draw(); requestAnimationFrame(tick); };
+  const update = () => {
+    const should = visible && inView;
+    if (should && !running) { running = true; requestAnimationFrame(tick); }
+    else if (!should) running = false;
+  };
+  document.addEventListener('visibilitychange', () => { visible = !document.hidden; update(); });
+  const hero = document.getElementById('top') || document.querySelector('.hero');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; update(); }, { threshold: 0 }).observe(hero);
+  }
+  update();
 })();
 
 // ===== Cursor spotlight + hero parallax =====
@@ -75,23 +93,32 @@ const finePointer = window.matchMedia('(pointer: fine)').matches;
   const spot = document.getElementById('spot');
   const depths = [...document.querySelectorAll('[data-depth]')];
   let tx = 0, ty = 0, cx = 0, cy = 0;
-
-  addEventListener('mousemove', (e) => {
-    if (spot) { spot.style.opacity = '1'; spot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; }
-    tx = (e.clientX / innerWidth - 0.5) * 2;
-    ty = (e.clientY / innerHeight - 0.5) * 2;
-  });
+  let running = false, inView = true;
 
   const loop = () => {
+    if (!running) return;
     cx += (tx - cx) * 0.06;
     cy += (ty - cy) * 0.06;
     for (const el of depths) {
       const d = +el.dataset.depth;
       el.style.transform = `translate(${cx * d}px, ${cy * d}px)`;
     }
+    if (Math.abs(tx - cx) < 0.0005 && Math.abs(ty - cy) < 0.0005) { running = false; return; }
     requestAnimationFrame(loop);
   };
-  loop();
+  const start = () => { if (!running && inView) { running = true; requestAnimationFrame(loop); } };
+
+  addEventListener('mousemove', (e) => {
+    if (spot) { spot.style.opacity = '1'; spot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; }
+    tx = (e.clientX / innerWidth - 0.5) * 2;
+    ty = (e.clientY / innerHeight - 0.5) * 2;
+    start();
+  });
+
+  const hero = document.getElementById('top') || document.querySelector('.hero');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; if (inView) start(); else running = false; }, { threshold: 0 }).observe(hero);
+  }
 })();
 
 // ===== 3D tilt on cards =====
