@@ -23,7 +23,7 @@
 .rf-proj__grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:64px; }
 .rf-proj--flip .rf-proj__grid{ grid-template-columns:1.2fr .8fr; }
 .rf-proj--flip .rf-track{ order:-1; }
-/* --run: délka prohlídky; kratší web má kratší stopu, aby se posouval stejně rychle jako ostatní */
+/* --run: délka prohlídky; delší web má delší stopu, aby se všechny posouvaly stejně pomalu */
 .rf-track{ height:calc(100vh + 160vh * var(--run,1)); }
 .rf-text, .rf-pinwrap{ position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:center; padding-top:74px; }
 
