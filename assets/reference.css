@@ -23,7 +23,8 @@
 .rf-proj__grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:64px; }
 .rf-proj--flip .rf-proj__grid{ grid-template-columns:1.2fr .8fr; }
 .rf-proj--flip .rf-track{ order:-1; }
-.rf-track{ height:260vh; }
+/* --run: délka prohlídky; kratší web má kratší stopu, aby se posouval stejně rychle jako ostatní */
+.rf-track{ height:calc(100vh + 160vh * var(--run,1)); }
 .rf-text, .rf-pinwrap{ position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:center; padding-top:74px; }
 
 /* text projektu */
@@ -127,7 +128,7 @@
   .rf-proj--flip .rf-track{ order:0; }
   .rf-text{ position:static; height:auto; padding:90px 0 0; }
   .rf-feats, .rf-progress{ display:none; }
-  .rf-track{ height:230vh; height:230svh; }
+  .rf-track{ height:calc(100vh + 130vh * var(--run,1)); height:calc(100svh + 130svh * var(--run,1)); }
   .rf-pinwrap{ height:100vh; height:100svh; }
   .rf-stage{ width:min(100%, calc((100svh - 330px) * 1.5)); }
   .rf-mhead{ display:flex; }
