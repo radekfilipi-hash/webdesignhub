@@ -31,8 +31,8 @@
     gtag('config', 'G-8NW5BPCKP9');
   </script>
 
-  <title>Online rezervační systém — objednávky 24/7 na vašem webu | WebDesignHub</title>
-  <meta name="description" content="Rezervační systém na míru k vašemu webu. Zákazníci se objednají online 24/7, systém pošle připomínky a vám ubyde telefonování i papírování. Prohlédněte si ho v akci." />
+  <title>Rezervační systém — objednávky, které se vyřídí samy | WebDesignHub</title>
+  <meta name="description" content="Online rezervační systém k vašemu webu. Zákazník si sám vybere volný termín a dostane potvrzení i připomínku. Vy se věnujete práci a kalendář se plní, i když máte zavřeno." />
   <link rel="canonical" href="https://webdesignhub.cz/rezervace.html" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="WebDesignHub" />
@@ -42,8 +42,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="cs_CZ" />
   <meta property="og:site_name" content="WebDesignHub" />
-  <meta property="og:title" content="Online rezervační systém — objednávky 24/7 na vašem webu" />
-  <meta property="og:description" content="Rezervační systém na míru k vašemu webu. Zákazníci se objednají online 24/7, systém pošle připomínky a vám ubyde telefonování." />
+  <meta property="og:title" content="Rezervační systém — objednávky, které se vyřídí samy" />
+  <meta property="og:description" content="Zákazník si sám vybere volný termín a dostane potvrzení i připomínku. Vy se věnujete práci a kalendář se plní, i když máte zavřeno." />
   <meta property="og:url" content="https://webdesignhub.cz/rezervace.html" />
   <meta property="og:image" content="https://webdesignhub.cz/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -52,8 +52,8 @@
 
   <!-- Twitter/X card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Online rezervační systém — objednávky 24/7 na vašem webu" />
-  <meta name="twitter:description" content="Rezervační systém na míru k vašemu webu. Zákazníci se objednají online 24/7 a systém pošle připomínky." />
+  <meta name="twitter:title" content="Rezervační systém — objednávky, které se vyřídí samy" />
+  <meta name="twitter:description" content="Zákazník si sám vybere volný termín a dostane potvrzení i připomínku. Vy se věnujete práci." />
   <meta name="twitter:image" content="https://webdesignhub.cz/og-image.jpg" />
 
   <link rel="icon" href="favicon.ico" sizes="any" />
@@ -65,6 +65,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css?v=auto" />
+  <link rel="stylesheet" href="assets/rezervace.css?v=auto" />
 
   <!-- Strukturovaná data: drobečky -->
   <script type="application/ld+json">
@@ -73,7 +74,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Úvod", "item": "https://webdesignhub.cz/" },
-      { "@type": "ListItem", "position": 2, "name": "Rezervace", "item": "https://webdesignhub.cz/rezervace.html" }
+      { "@type": "ListItem", "position": 2, "name": "Rezervační systém", "item": "https://webdesignhub.cz/rezervace.html" }
     ]
   }
   </script>
@@ -113,100 +114,198 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero" id="top">
-    <div class="hero__glow"></div>
-    <div class="container hero__inner">
-      <div class="hero__badge reveal">
-        <span class="dot"></span> Online rezervace
+  <section class="rz-hero" id="top">
+    <div class="container rz-hero__inner">
+      <div class="rz-hero__text">
+        <span class="rz-badge reveal"><span class="rz-badge__ico">📅</span> Rezervační systém</span>
+        <h1 class="reveal">Objednávky, které se <span class="grad">vyřídí samy</span>, a vy se věnujete zákazníkům</h1>
+        <p class="rz-hero__lead reveal">
+          Zákazník si sám vybere volný termín a dostane potvrzení i připomínku. Vy nemusíte
+          přerušovat práci, nic zapisovat ani hlídat, stačí se podívat do kalendáře.
+        </p>
+        <div class="rz-hero__cta reveal">
+          <a href="https://objednejme.cz" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Prohlédnout rezervační systém →</a>
+          <a href="index.html#kontakt" class="btn btn--ghost btn--lg">Chci ho na svůj web</a>
+        </div>
+        <ul class="rz-points reveal">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Víc času na práci, míň zařizování</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Kalendář se plní, i když máte zavřeno</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Míň propadlých termínů díky připomínkám</li>
+        </ul>
       </div>
-      <h1 class="hero__title reveal">
-        Nechte zákazníky objednávat se <span class="grad">online, 24/7</span>
-      </h1>
-      <p class="hero__lead reveal">
-        Rezervační systém na míru, který zapadne k vašemu webu. Zákazník si vybere termín,
-        systém pošle připomínku — a vám ubyde telefonování i papírování.
-      </p>
-      <div class="hero__cta reveal">
-        <a href="https://objednejme.cz" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Prohlédnout rezervační systém →</a>
-        <a href="index.html#kontakt" class="btn btn--ghost btn--lg">Chci ho na svůj web</a>
+
+      <!-- ukázka rezervace (dekorativní) -->
+      <div class="rz-mock reveal" aria-hidden="true">
+        <div class="rz-app">
+          <div class="rz-app__top"><span class="rz-app__dots"><i></i><i></i><i></i></span> Online rezervace</div>
+          <div class="rz-app__body">
+            <div class="rz-service">
+              <span class="rz-service__ico">✂️</span>
+              <div><strong>Střih + úprava vousů</strong><small>45 minut</small></div>
+              <span class="rz-service__ok">✓</span>
+            </div>
+            <div class="rz-label"><span>Listopad 2026</span><span>Vyberte den</span></div>
+            <div class="rz-days">
+              <span class="rz-day">Po<b>9</b></span>
+              <span class="rz-day">Út<b>10</b></span>
+              <span class="rz-day">St<b>11</b></span>
+              <span class="rz-day is-active">Čt<b>12</b></span>
+              <span class="rz-day">Pá<b>13</b></span>
+              <span class="rz-day is-off">So<b>14</b></span>
+            </div>
+            <div class="rz-label"><span>Volné časy</span></div>
+            <div class="rz-slots">
+              <span>9:00</span>
+              <span class="is-taken">10:30</span>
+              <span>12:00</span>
+              <span class="is-active">14:00</span>
+              <span class="is-taken">15:30</span>
+              <span>17:00</span>
+            </div>
+            <div class="rz-app__btn">Potvrdit rezervaci</div>
+          </div>
+        </div>
+        <div class="rz-toast rz-toast--ok">
+          <span class="rz-toast__ico">✓</span>
+          <div><strong>Nová rezervace</strong><small>Čt 12. 11. · 14:00 · Střih</small></div>
+        </div>
+        <div class="rz-toast rz-toast--bell">
+          <span class="rz-toast__ico">🔔</span>
+          <div><strong>Připomínka odeslána</strong><small>den před termínem</small></div>
+        </div>
       </div>
-      <ul class="hero__points reveal">
-        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Získáte i zákazníky, co nezavolají</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Objednávky i mimo otevírací dobu</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Připomínky snižují propadlé termíny</li>
-      </ul>
     </div>
   </section>
 
-  <!-- ===== Benefits ===== -->
-  <section class="section" id="vyhody">
+  <!-- ===== Bez systému × se systémem ===== -->
+  <section class="rz-section" id="rozdil">
     <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow">Proč online rezervace</span>
-        <h2>Diář, který se plní sám</h2>
-        <p class="section__sub">Zákazníci se objednají, kdy se jim to hodí. Vy máte přehled a klid — bez neustálého zvonění telefonu.</p>
+      <div class="rz-head reveal">
+        <div>
+          <span class="eyebrow">Hlavní rozdíl</span>
+          <h2>Objednávání přestane být vaše starost</h2>
+        </div>
+        <p>Domlouvání termínů dnes zabírá čas, který byste mohli věnovat práci a zákazníkům. Rezervační systém tuhle agendu převezme celou.</p>
       </div>
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card__icon">📅</div>
-          <h3>Objednávky 24/7</h3>
-          <p>Zákazníci se objednají, kdy se jim to hodí — i večer nebo o víkendu. Vy nemusíte nic řešit.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon">🔔</div>
-          <h3>Automatické připomínky</h3>
-          <p>Systém sám pošle potvrzení a připomínku. Méně zapomenutých termínů a proluk v kalendáři.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon">🗓️</div>
+      <div class="rz-compare">
+        <div class="rz-col rz-col--no reveal">
+          <h3>Bez rezervačního systému</h3>
+          <ul>
+            <li>Domlouvání termínů vás vytrhává od práce</li>
+            <li>Termíny zapisujete a hlídáte ručně</li>
+            <li>Kdo se k vám nedostane, objedná se jinde</li>
+            <li>Zapomenuté termíny nechávají v kalendáři díry</li>
+          </ul>
+        </div>
+        <div class="rz-col rz-col--yes reveal">
+          <h3><span class="grad">S rezervačním systémem</span></h3>
+          <ul>
+            <li>Zákazník si volný termín vybere sám, kdykoli</li>
+            <li>Kalendář se plní a aktualizuje automaticky</li>
+            <li>Potvrzení i připomínky odcházejí samy</li>
+            <li>Vy se věnujete práci a zákazníkům</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Jedna rezervace v praxi ===== -->
+  <section class="rz-section rz-section--band" id="v-praxi">
+    <div class="container">
+      <div class="rz-head reveal">
+        <div>
+          <span class="eyebrow">V praxi</span>
+          <h2>Jedna rezervace od začátku do konce</h2>
+        </div>
+        <p>Takhle vypadá běžná objednávka. Všimněte si, kolikrát do ní musíte zasáhnout vy.</p>
+      </div>
+      <div class="rz-timeline">
+        <div class="rz-event reveal">
+          <div class="rz-event__time">21:47<small>neděle</small></div>
+          <div class="rz-event__card">
+            <h3>Zákazník si vybere termín <span class="rz-tag">zákazník</span></h3>
+            <p>Večer otevře váš web, zvolí službu a volný čas. Za minutu je hotovo, i když máte dávno zavřeno.</p>
+          </div>
+        </div>
+        <div class="rz-event reveal">
+          <div class="rz-event__time">21:48<small>neděle</small></div>
+          <div class="rz-event__card">
+            <h3>Potvrzení a zápis do kalendáře <span class="rz-tag rz-tag--auto">automaticky</span></h3>
+            <p>Zákazník dostane potvrzení a termín se vám rovnou objeví v kalendáři.</p>
+          </div>
+        </div>
+        <div class="rz-event reveal">
+          <div class="rz-event__time">14:00<small>středa</small></div>
+          <div class="rz-event__card">
+            <h3>Připomínka den předem <span class="rz-tag rz-tag--auto">automaticky</span></h3>
+            <p>Systém zákazníkovi termín připomene, takže na něj nezapomene a nepropadne.</p>
+          </div>
+        </div>
+        <div class="rz-event rz-event--done reveal">
+          <div class="rz-event__time">14:00<small>čtvrtek</small></div>
+          <div class="rz-event__card">
+            <h3>Zákazník dorazí <span class="rz-tag rz-tag--done">hotovo</span></h3>
+            <p>A vy jste mezitím nemuseli nic řešit. Žádné zapisování, žádné hlídání.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Co systém umí ===== -->
+  <section class="rz-section" id="funkce">
+    <div class="container">
+      <div class="rz-head reveal">
+        <div>
+          <span class="eyebrow">Co umí</span>
+          <h2>Všechno, co od rezervací potřebujete</h2>
+        </div>
+        <p>Nastavíte jednou podle svého provozu a dál už to běží samo.</p>
+      </div>
+      <div class="rz-bento">
+        <article class="rz-tile rz-tile--big reveal">
+          <div class="rz-tile__ico">🗓️</div>
           <h3>Přehledný kalendář</h3>
-          <p>Všechny rezervace na jednom místě. Hned vidíte, kdo, kdy a na co dorazí.</p>
+          <p>Všechny rezervace na jednom místě. Hned vidíte, kdo, kdy a na co dorazí, a nové termíny přibývají samy.</p>
+          <div class="rz-sched" aria-hidden="true">
+            <div class="rz-sched__row"><span>9:00</span><div class="rz-sched__ev">Jana K. · Střih</div></div>
+            <div class="rz-sched__row"><span>10:30</span><div class="rz-sched__ev rz-sched__ev--b">Petr M. · Střih + vousy</div></div>
+            <div class="rz-sched__row"><span>12:00</span><div class="rz-sched__free">volno</div></div>
+            <div class="rz-sched__row"><span>13:00</span><div class="rz-sched__ev rz-sched__ev--c">Lucie D. · Barvení</div></div>
+            <div class="rz-sched__row"><span>14:00</span><div class="rz-sched__ev">Tomáš R. · Střih <em>nová</em></div></div>
+          </div>
         </article>
-        <article class="card reveal">
-          <div class="card__icon">📱</div>
-          <h3>Funguje na mobilu</h3>
-          <p>Objednání i správa fungují skvěle na telefonu — pro zákazníka i pro vás.</p>
+        <article class="rz-tile reveal">
+          <div class="rz-tile__ico">⚙️</div>
+          <h3>Podle vašeho provozu</h3>
+          <p>Služby, délky termínů, otevírací doba i pauzy. Nastavíte přesně tak, jak pracujete.</p>
         </article>
-        <article class="card reveal">
-          <div class="card__icon">⚙️</div>
-          <h3>Nastavení na míru</h3>
-          <p>Služby, jejich délku, otevírací dobu i pauzy si nastavíte přesně podle svého provozu.</p>
+        <article class="rz-tile reveal">
+          <div class="rz-tile__ico">📱</div>
+          <h3>Přímo na vašem webu</h3>
+          <p>Ve stejném designu jako zbytek webu a pohodlně i na mobilu.</p>
         </article>
-        <article class="card reveal">
-          <div class="card__icon">🔗</div>
-          <h3>Napojení na web</h3>
-          <p>Rezervace propojíme přímo s vaším webem, ať to ladí a zákazník nikam neodbíhá.</p>
+        <article class="rz-tile rz-tile--wide reveal">
+          <div class="rz-tile__ico">✨</div>
+          <h3>Hodí se pro každou službu na termín</h3>
+          <div class="rz-chips">
+            <span>Kadeřnictví a barbershopy</span><span>Masáže</span><span>Kosmetika</span>
+            <span>Fyzioterapie</span><span>Poradenství</span><span>Fitness a lekce</span><span>Autoservisy</span>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== How it works ===== -->
-  <section class="section section--alt" id="jak">
+  <!-- ===== Závěrečná výzva ===== -->
+  <section class="rz-cta" id="kontakt">
     <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow">Jak to funguje</span>
-        <h2>Od nastavení k plnému diáři ve 4 krocích</h2>
-        <p class="section__sub">Jednou nastavíte, a pak už se objednávky sbírají samy.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><span class="step__n">01</span><h3>Vyberete služby a časy</h3><p>Nastavíme služby, jejich délku a vaši dostupnost. Jednou — a pak už to jede.</p></div>
-        <div class="step reveal"><span class="step__n">02</span><h3>Zákazník se objedná</h3><p>Na webu si vybere termín a potvrdí. Zabere mu to jen pár kliknutí.</p></div>
-        <div class="step reveal"><span class="step__n">03</span><h3>Dorazí připomínka</h3><p>Systém pošle potvrzení i připomínku, aby na termín nikdo nezapomněl.</p></div>
-        <div class="step reveal"><span class="step__n">04</span><h3>Vy jen přijímáte</h3><p>Plný diář bez telefonování. V kalendáři vidíte vše na jeden pohled.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section class="cta" id="kontakt">
-    <div class="cta__glow"></div>
-    <div class="container cta__inner" style="grid-template-columns:1fr;text-align:center;max-width:720px">
-      <div class="cta__text reveal">
+      <div class="rz-cta__box reveal">
         <span class="eyebrow">Rezervace na vašem webu</span>
-        <h2>Chcete, aby se k vám zákazníci objednávali sami?</h2>
-        <p>Mrkněte na rezervační systém v akci, nebo nám napište — napojíme ho přímo na váš web.</p>
-        <div class="hero__cta" style="justify-content:center;margin-bottom:0">
+        <h2>Chcete kalendář, který se plní&nbsp;sám?</h2>
+        <p>Podívejte se, jak rezervační systém funguje, nebo nám napište a napojíme ho na váš web.</p>
+        <div class="rz-cta__btns">
           <a href="https://objednejme.cz" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Prohlédnout systém →</a>
           <a href="index.html#kontakt" class="btn btn--ghost btn--lg">Nezávazně poptat</a>
         </div>

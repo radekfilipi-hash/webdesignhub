@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Deploy statického webu webdesignhub na Wedos webhosting přes FTP(S).
 # Nahraje POUZE verzované soubory (git ls-files) kromě README.md a tohoto skriptu.
-# => index.html, varianty.html, assets/**  (NE .git, NE reference.html, NE README.md)
+# => *.html, assets/**  (NE .git, NE reference.html, NE README.md)
 #
 # Použití:
 #   1) zkopíruj deploy-wedos.env.example -> deploy-wedos.env a vyplň údaje
@@ -41,36 +41,47 @@ CURL_OPTS=(--fail --show-error --silent --ftp-create-dirs --disable-epsv)
 mapfile -t FILES < <(git ls-files | grep -vE '^(README\.md|deploy-wedos\.(sh|env|env\.example))$')
 
 # --- automatický cache-busting: verze assetů = krátký hash jejich obsahu ---
-# V index.html je placeholder "?v=auto"; při deployi ho nahradíme hashem obsahu,
+# V HTML je u CSS/JS placeholder "?v=auto"; při deployi ho nahradíme hashem obsahu,
 # takže prohlížeče stáhnou CSS/JS znovu jen tehdy, když se soubor opravdu změní.
+# Platí pro všechna *.html a všechny assets/*.css|js (i nové podstránky a styly).
 hash8() {
   if command -v md5sum >/dev/null 2>&1; then md5sum "$1" | cut -c1-8
   else git hash-object "$1" | cut -c1-8; fi
 }
-CSS_V="$(hash8 assets/style.css)"
-JS_V="$(hash8 assets/main.js)"
-[ -n "$CSS_V" ] && [ -n "$JS_V" ] || { echo "CHYBA: nepodařilo se spočítat hash assetů"; exit 1; }
-echo "Cache-bust verze: style.css?v=${CSS_V}  main.js?v=${JS_V}"
+SED_ARGS=()
+for a in "${FILES[@]}"; do
+  case "$a" in
+    assets/*.css|assets/*.js)
+      v="$(hash8 "$a")"
+      [ -n "$v" ] || { echo "CHYBA: nepodařilo se spočítat hash $a"; exit 1; }
+      esc="$(printf '%s' "$a" | sed 's/\./\\./g')"
+      SED_ARGS+=(-e "s#(${esc}\\?v=)[^\"']*#\\1${v}#g")
+      echo "Cache-bust verze: ${a}?v=${v}"
+      ;;
+  esac
+done
 
-# dočasný index.html s dosazenými verzemi (zdroj s ?v=auto necháváme beze změny)
-TMP_INDEX="$(mktemp)"
-trap 'rm -f "$TMP_INDEX"' EXIT
-sed -E \
-  -e "s#(assets/style\.css\?v=)[^\"']*#\1${CSS_V}#g" \
-  -e "s#(assets/main\.js\?v=)[^\"']*#\1${JS_V}#g" \
-  index.html > "$TMP_INDEX"
+# dočasné kopie HTML s dosazenými verzemi (zdroje s ?v=auto necháváme beze změny)
+TMP_DIR="$(mktemp -d)"
+trap 'rm -rf "$TMP_DIR"' EXIT
+tmp_html() { printf '%s/%s' "$TMP_DIR" "${1//\//__}"; }
+for f in "${FILES[@]}"; do
+  case "$f" in
+    *.html) sed -E "${SED_ARGS[@]}" "$f" > "$(tmp_html "$f")" ;;
+  esac
+done
 
 echo "Cíl:   ftp://${WEDOS_FTP_HOST}${WEDOS_FTP_DIR}  (uživatel: ${WEDOS_FTP_USER}, TLS=${WEDOS_FTP_TLS})"
 echo "Soubory k nahrání: ${#FILES[@]}"
 
 for f in "${FILES[@]}"; do
   remote="ftp://${WEDOS_FTP_HOST}${WEDOS_FTP_DIR}${f}"
-  # index.html nahrajeme z dočasné verze s dosazenými hash-verzemi assetů
+  # HTML nahrajeme z dočasné verze s dosazenými hash-verzemi assetů
   src="$f"
-  [ "$f" = "index.html" ] && src="$TMP_INDEX"
+  case "$f" in *.html) src="$(tmp_html "$f")" ;; esac
   if [ "$DRY_RUN" = "1" ]; then
     echo "  [dry] $f  ->  $remote"
-    [ "$f" = "index.html" ] && echo "        └ index.html s verzemi: style.css?v=${CSS_V}, main.js?v=${JS_V}"
+    case "$f" in *.html) grep -oE 'assets/[^"?]+\?v=[^"]*' "$src" | sed 's/^/        └ /' ;; esac
     continue
   fi
   printf '  ↑ %s\n' "$f"
