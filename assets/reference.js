@@ -6,9 +6,10 @@
   // o kolik posunout snímek v rámečku; notebook i mobil doběhnou současně
   const measure = () => devices.forEach((d) => {
     const screens = [...d.querySelectorAll('.rf-screen')];
+    // výška obrázku je známá z width/height atributů i před načtením
     const shifts = screens.map((s) => {
       const img = s.querySelector('img');
-      return img && img.naturalHeight ? Math.max(0, img.offsetHeight - s.clientHeight) : 0;
+      return img ? Math.max(0, img.offsetHeight - s.clientHeight) : 0;
     });
     const dur = Math.max(3, (shifts[0] || 0) / 320);
     screens.forEach((s, i) => {
@@ -22,11 +23,18 @@
   addEventListener('resize', measure);
   measure();
 
-  // dotyková zařízení nemají hover: náhled se rozjede sám, když je v obraze
-  if (!matchMedia('(hover: hover)').matches && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-      e.target.classList.toggle('is-play', e.isIntersecting);
-    }), { threshold: 0.6 });
-    devices.forEach((d) => io.observe(d));
+  // dotyková zařízení nemají hover: náhled se jednou rozjede sám, když je v obraze.
+  // Zpátky nahoru se nevrací (při scrollování by se cukal), klepnutím se přehraje znovu.
+  if (!matchMedia('(hover: hover)').matches) {
+    devices.forEach((d) => d.addEventListener('click', () => d.classList.toggle('is-play')));
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-play');
+        io.unobserve(e.target);
+      }), { threshold: 0.6 });
+      devices.forEach((d) => io.observe(d));
+    }
   }
 })();
