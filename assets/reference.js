@@ -9,6 +9,7 @@
 
   const items = projects.map((el) => ({
     track: el.querySelector('.rf-track'),
+    pinwrap: el.querySelector('.rf-pinwrap'),
     stage: el.querySelector('.rf-stage'),
     screens: [...el.querySelectorAll('.rf-screen')].map((s) => ({
       s, scroller: s.querySelector('.rf-scroll'), img: s.querySelector('img'),
@@ -64,7 +65,8 @@
   const measure = () => {
     items.forEach((it) => {
       it.top = it.track.getBoundingClientRect().top + scrollY;
-      it.len = Math.max(1, it.track.offsetHeight - innerHeight);
+      // výška přichycené části (100svh) se na iPhonu při schovávání adresního řádku nemění, innerHeight ano
+      it.len = Math.max(1, it.track.offsetHeight - (it.pinwrap.offsetHeight || innerHeight));
       it.screens.forEach((x) => {
         x.frameH = x.s.clientHeight;
         x.imgH = x.img.offsetHeight;
