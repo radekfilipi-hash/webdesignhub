@@ -1,4 +1,31 @@
-// ===== Reference: prohlídka webu řízená scrollováním =====
+// ===== Reference na PC: po najetí myší se náhled projede celý =====
+// (zobrazuje se jen u zařízení s myší, viz .rf-pc v reference.css)
+(() => {
+  const devices = [...document.querySelectorAll('.rf-pc .rf-device')];
+  if (!devices.length) return;
+
+  // o kolik posunout snímek v rámečku; notebook i mobil doběhnou současně
+  const measure = () => devices.forEach((d) => {
+    const screens = [...d.querySelectorAll('.rf-screen')];
+    // výška obrázku je známá z width/height atributů i před načtením
+    const shifts = screens.map((s) => {
+      const img = s.querySelector('img');
+      return img ? Math.max(0, img.offsetHeight - s.clientHeight) : 0;
+    });
+    const dur = Math.max(3, (shifts[0] || 0) / 320);
+    screens.forEach((s, i) => {
+      s.style.setProperty('--shift', -shifts[i] + 'px');
+      s.style.setProperty('--dur', dur.toFixed(2) + 's');
+    });
+  });
+  devices.forEach((d) => d.querySelectorAll('img').forEach((img) => {
+    if (!img.complete) img.addEventListener('load', measure, { once: true });
+  }));
+  addEventListener('resize', measure);
+  measure();
+})();
+
+// ===== Reference na mobilu a tabletu: prohlídka webu řízená scrollováním =====
 // Náhled je přichycený na obrazovce, web v notebooku i telefonu se posouvá podle
 // scrollování a k právě viditelnému místu se ukáže popisek.
 (() => {

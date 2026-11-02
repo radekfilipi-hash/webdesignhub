@@ -19,7 +19,18 @@
   border-radius:2px; background:var(--accent); animation:rfCue 1.8s ease-in-out infinite; }
 @keyframes rfCue{ 0%{ transform:translateY(0); opacity:1; } 70%{ transform:translateY(12px); opacity:0; } 100%{ opacity:0; } }
 
-/* ===== Projekt: dlouhá stopa (rf-track), obsah přichycený na obrazovce ===== */
+/* ===== Přepínání podle zařízení =====
+   S myší (PC): náhled se projede po najetí myší (rf-pc). Mobil a tablet:
+   prohlídka řízená scrollováním (rf-touch). Třídy, které mají obě varianty
+   jinak, jsou vymezené přes .rf-pc / .rf-touch. */
+.rf-pc, .rf-pc-only{ display:none; }
+@media (hover:hover) and (pointer:fine){
+  .rf-pc{ display:grid; }
+  .rf-pc-only{ display:block; }
+  .rf-touch, .rf-touch-only{ display:none; }
+}
+
+/* ===== Mobil a tablet: dlouhá stopa (rf-track), obsah přichycený na obrazovce ===== */
 .rf-proj__grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:64px; }
 .rf-proj--flip .rf-proj__grid{ grid-template-columns:1.2fr .8fr; }
 .rf-proj--flip .rf-track{ order:-1; }
@@ -34,14 +45,14 @@
 .rf-tag i{ width:8px; height:8px; border-radius:50%; background:var(--tone,var(--accent)); box-shadow:0 0 10px var(--tone,var(--accent)); }
 .rf-text h2{ margin-bottom:14px; font-size:clamp(1.8rem,3.2vw,2.6rem); word-spacing:.08em; }
 .rf-desc{ margin-bottom:18px; color:var(--muted); font-size:1.02rem; }
-.rf-feats{ list-style:none; display:grid; gap:2px; margin:0 -12px 22px; }
-.rf-feats li{ display:flex; align-items:center; gap:12px; padding:9px 12px; border-radius:12px; cursor:pointer;
+.rf-touch .rf-feats{ list-style:none; display:grid; gap:2px; margin:0 -12px 22px; }
+.rf-touch .rf-feats li{ display:flex; align-items:center; gap:12px; padding:9px 12px; border-radius:12px; cursor:pointer;
   color:var(--muted); font-size:.95rem; font-weight:500; line-height:1.35; transition:color .3s, background .3s; }
-.rf-feats li::before{ content:""; width:9px; height:9px; flex:none; border-radius:50%; background:var(--line);
+.rf-touch .rf-feats li::before{ content:""; width:9px; height:9px; flex:none; border-radius:50%; background:var(--line);
   transition:background .3s, box-shadow .3s; }
-.rf-feats li:hover{ color:var(--text); }
-.rf-feats li.is-on{ color:var(--text); background:rgba(34,211,238,.07); }
-.rf-feats li.is-on::before{ background:var(--accent); box-shadow:0 0 0 4px rgba(34,211,238,.18), 0 0 12px rgba(34,211,238,.7); }
+.rf-touch .rf-feats li:hover{ color:var(--text); }
+.rf-touch .rf-feats li.is-on{ color:var(--text); background:rgba(34,211,238,.07); }
+.rf-touch .rf-feats li.is-on::before{ background:var(--accent); box-shadow:0 0 0 4px rgba(34,211,238,.18), 0 0 12px rgba(34,211,238,.7); }
 .rf-progress{ display:flex; align-items:center; gap:14px; margin-bottom:26px; color:var(--faint);
   font-size:.74rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
 .rf-progress span{ position:relative; flex:1; height:3px; overflow:hidden; border-radius:3px; background:var(--line); }
@@ -69,15 +80,15 @@
 .rf-laptop__base::before{ content:""; position:absolute; top:0; left:50%; width:16%; height:42%;
   border-radius:0 0 8px 8px; background:#141624; transform:translateX(-50%); }
 
-.rf-phone{ position:absolute; right:0; bottom:0; z-index:2; width:22%; padding:clamp(4px,.55vw,7px);
+.rf-touch .rf-phone{ position:absolute; right:0; bottom:0; z-index:2; width:22%; padding:clamp(4px,.55vw,7px);
   border-radius:clamp(20px,2.9vw,36px); background:#07080d; border:1px solid #30364f;
   box-shadow:0 34px 60px -22px rgba(0,0,0,.95), inset 0 0 0 2px #14161f; }
-.rf-proj--flip .rf-phone{ right:auto; left:0; }
-.rf-phone::before{ content:""; position:absolute; top:clamp(9px,1.15vw,14px); left:50%; z-index:3; width:32%;
+.rf-touch .rf-proj--flip .rf-phone{ right:auto; left:0; }
+.rf-touch .rf-phone::before{ content:""; position:absolute; top:clamp(9px,1.15vw,14px); left:50%; z-index:3; width:32%;
   height:clamp(6px,.8vw,10px); border-radius:99px; background:#07080d; transform:translateX(-50%); }
-.rf-phone .rf-screen{ aspect-ratio:9/19.5; border-radius:clamp(16px,2.4vw,29px); }
+.rf-touch .rf-phone .rf-screen{ aspect-ratio:9/19.5; border-radius:clamp(16px,2.4vw,29px); }
 
-.rf-screen{ position:relative; overflow:hidden; background:#fff; }
+.rf-touch .rf-screen{ position:relative; overflow:hidden; background:#fff; }
 .rf-scroll{ position:relative; will-change:transform; }
 .rf-scroll img{ display:block; width:100%; height:auto; }
 
@@ -110,6 +121,71 @@
 .rf-mcap__bar i{ position:absolute; inset:0; transform:scaleX(0); transform-origin:left;
   background:linear-gradient(90deg,var(--brand),var(--accent)); }
 
+/* ===== PC: weby v okně prohlížeče + mobilu, posun po najetí myší ===== */
+.rf-projects{ gap:150px; padding-block:90px 90px; }
+.rf-project{ display:grid; grid-template-columns:1.22fr .78fr; gap:72px; align-items:center; }
+.rf-project--flip{ grid-template-columns:.78fr 1.22fr; }
+.rf-project--flip .rf-device{ order:2; }
+
+.rf-device{ position:relative; isolation:isolate; padding:0 7% 10% 0; cursor:ns-resize; }
+.rf-project--flip .rf-device{ padding:0 0 10% 7%; }
+.rf-device::before{ content:""; position:absolute; inset:0 6% 8% 0; z-index:-1; pointer-events:none;
+  background:radial-gradient(closest-side, rgba(109,92,255,.33), transparent); transform:scale(1.15); }
+
+.rf-browser{ border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#0f111b;
+  box-shadow:0 50px 90px -40px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.04); }
+.rf-bar{ display:flex; align-items:center; gap:12px; height:34px; padding:0 14px;
+  background:#151829; border-bottom:1px solid var(--line-soft); }
+.rf-bar__dots{ display:flex; gap:6px; }
+.rf-bar__dots i{ width:9px; height:9px; border-radius:50%; background:#2a2f47; }
+.rf-url{ display:flex; align-items:center; justify-content:center; gap:6px; flex:1; max-width:60%; height:21px; margin:0 auto;
+  border-radius:6px; background:#0d0f19; color:var(--faint); font-size:.72rem; white-space:nowrap; overflow:hidden; }
+.rf-url svg{ width:10px; height:10px; flex:none; fill:none; stroke:currentColor; stroke-width:2.4; }
+.rf-bar__end{ width:45px; }
+
+.rf-pc .rf-screen{ position:relative; overflow:hidden; aspect-ratio:16/10; background:#fff; }
+.rf-pc .rf-screen img{ display:block; width:100%; height:auto; transform:translateY(0);
+  transition:transform 1.1s var(--ease); will-change:transform; }
+.rf-device:hover .rf-screen img{ transform:translateY(var(--shift,0px));
+  transition-duration:var(--dur,6s); transition-timing-function:cubic-bezier(.45,.05,.55,.95); }
+
+.rf-pc .rf-phone{ position:absolute; right:0; bottom:0; z-index:2; width:25%; padding:6px; border-radius:26px;
+  background:#06070c; border:1px solid #2a2f47; box-shadow:0 30px 60px -20px rgba(0,0,0,.9); }
+.rf-pc .rf-project--flip .rf-phone{ right:auto; left:0; }
+.rf-pc .rf-phone::before{ content:""; position:absolute; top:12px; left:50%; z-index:2; width:28%; height:8px;
+  border-radius:99px; background:#06070c; transform:translateX(-50%); }
+.rf-pc .rf-phone .rf-screen{ aspect-ratio:9/19.5; border-radius:20px; }
+
+.rf-hint{ position:absolute; left:50%; bottom:16px; z-index:2; display:flex; align-items:center; gap:8px; padding:8px 15px;
+  border-radius:999px; background:rgba(10,11,18,.86); color:#fff; font-size:.8rem; font-weight:500; white-space:nowrap;
+  transform:translateX(-50%); pointer-events:none; transition:opacity .35s; box-shadow:0 10px 30px -10px rgba(0,0,0,.6); }
+.rf-device:hover .rf-hint{ opacity:0; }
+
+.rf-project h2{ margin-bottom:14px; font-size:clamp(1.8rem,3.2vw,2.6rem); word-spacing:.08em; }
+.rf-project__desc{ margin-bottom:26px; color:var(--muted); font-size:1.04rem; }
+.rf-pc .rf-feats{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:12px 18px; margin-bottom:32px; }
+.rf-pc .rf-feats li{ display:flex; align-items:center; gap:10px; font-size:.95rem; font-weight:500; line-height:1.35; }
+.rf-pc .rf-feats svg{ width:24px; height:24px; padding:5px; flex:none; border-radius:8px; background:rgba(34,211,238,.12);
+  fill:none; stroke:var(--accent); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
+
+@media (max-width:960px){
+  .rf-projects{ gap:110px; padding-top:70px; }
+  .rf-project, .rf-project--flip{ grid-template-columns:1fr; gap:44px; }
+  .rf-project--flip .rf-device{ order:0; }
+}
+@media (max-width:620px){
+  .rf-bar{ height:26px; padding:0 10px; }
+  .rf-bar__dots i{ width:7px; height:7px; }
+  .rf-url{ height:16px; font-size:.62rem; }
+  .rf-pc .rf-phone{ width:31%; padding:4px; border-radius:18px; }
+  .rf-pc .rf-phone .rf-screen{ border-radius:14px; }
+  .rf-pc .rf-phone::before{ top:8px; height:6px; }
+  .rf-pc .rf-feats{ grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion:reduce){
+  .rf-pc .rf-screen img{ transition:none; }
+}
+
 /* ===== Závěrečná výzva ===== */
 .rf-cta{ padding:40px 0 120px; }
 .rf-cta__box{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center; padding:54px 58px;
@@ -127,7 +203,7 @@
   .rf-proj__grid, .rf-proj--flip .rf-proj__grid{ grid-template-columns:1fr; gap:0; }
   .rf-proj--flip .rf-track{ order:0; }
   .rf-text{ position:static; height:auto; padding:90px 0 0; }
-  .rf-feats, .rf-progress{ display:none; }
+  .rf-touch .rf-feats, .rf-progress{ display:none; }
   .rf-track{ height:calc(100vh + 130vh * var(--run,1)); height:calc(100svh + 130svh * var(--run,1)); }
   .rf-pinwrap{ height:100vh; height:100svh; }
   .rf-stage{ width:min(100%, calc((100svh - 330px) * 1.5)); }
