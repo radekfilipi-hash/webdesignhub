@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Consent Mode v2 (výchozí: odmítnuto) + GA4 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    // obnovit dřívější souhlas z tohoto prohlížeče
+    try {
+      if (localStorage.getItem('wdh_consent') === 'granted') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted', 'ad_user_data': 'granted',
+          'ad_personalization': 'granted', 'analytics_storage': 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NW5BPCKP9"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-8NW5BPCKP9');
+  </script>
+
+  <title>Online rezervační systém — objednávky 24/7 na vašem webu | WebDesignHub</title>
+  <meta name="description" content="Rezervační systém na míru k vašemu webu. Zákazníci se objednají online 24/7, systém pošle připomínky a vám ubyde telefonování i papírování. Prohlédněte si ho v akci." />
+  <link rel="canonical" href="https://webdesignhub.cz/rezervace.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="WebDesignHub" />
+  <meta name="theme-color" content="#6d5cff" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="cs_CZ" />
+  <meta property="og:site_name" content="WebDesignHub" />
+  <meta property="og:title" content="Online rezervační systém — objednávky 24/7 na vašem webu" />
+  <meta property="og:description" content="Rezervační systém na míru k vašemu webu. Zákazníci se objednají online 24/7, systém pošle připomínky a vám ubyde telefonování." />
+  <meta property="og:url" content="https://webdesignhub.cz/rezervace.html" />
+  <meta property="og:image" content="https://webdesignhub.cz/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="WebDesignHub — online rezervační systém" />
+
+  <!-- Twitter/X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Online rezervační systém — objednávky 24/7 na vašem webu" />
+  <meta name="twitter:description" content="Rezervační systém na míru k vašemu webu. Zákazníci se objednají online 24/7 a systém pošle připomínky." />
+  <meta name="twitter:image" content="https://webdesignhub.cz/og-image.jpg" />
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=auto" />
+
+  <!-- Strukturovaná data: drobečky -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Úvod", "item": "https://webdesignhub.cz/" },
+      { "@type": "ListItem", "position": 2, "name": "Rezervace", "item": "https://webdesignhub.cz/rezervace.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Animated background ===== -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__grid"></div>
+    <div class="bg__aurora bg__aurora--1"></div>
+    <div class="bg__aurora bg__aurora--2"></div>
+    <div class="bg__aurora bg__aurora--3"></div>
+    <canvas class="bg__canvas" id="fx"></canvas>
+    <div class="bg__noise"></div>
+    <div class="bg__spot" id="spot"></div>
+  </div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__mark">W</span>
+        <span class="brand__text">WebDesign<strong>Hub</strong></span>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html#sluzby">Služby</a>
+        <a href="index.html#proces">Jak to probíhá</a>
+        <a href="index.html#cenik">Ceník</a>
+        <a href="index.html#reference">Reference</a>
+        <a href="rezervace.html" aria-current="page">Rezervace</a>
+        <a href="index.html#kontakt" class="btn btn--sm btn--primary">Nezávazná poptávka</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero__glow"></div>
+    <div class="container hero__inner">
+      <div class="hero__badge reveal">
+        <span class="dot"></span> Online rezervace
+      </div>
+      <h1 class="hero__title reveal">
+        Nechte zákazníky objednávat se <span class="grad">online, 24/7</span>
+      </h1>
+      <p class="hero__lead reveal">
+        Rezervační systém na míru, který zapadne k vašemu webu. Zákazník si vybere termín,
+        systém pošle připomínku — a vám ubyde telefonování i papírování.
+      </p>
+      <div class="hero__cta reveal">
+        <a href="https://objednejme.cz" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Prohlédnout rezervační systém →</a>
+        <a href="index.html#kontakt" class="btn btn--ghost btn--lg">Chci ho na svůj web</a>
+      </div>
+      <ul class="hero__points reveal">
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Bez telefonování a SMS</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Objednávky ve dne i v noci</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Méně zapomenutých termínů</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Benefits ===== -->
+  <section class="section" id="vyhody">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Proč online rezervace</span>
+        <h2>Diář, který se plní sám</h2>
+        <p class="section__sub">Zákazníci se objednají, kdy se jim to hodí. Vy máte přehled a klid — bez neustálého zvonění telefonu.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon">📅</div>
+          <h3>Objednávky 24/7</h3>
+          <p>Zákazníci se objednají, kdy se jim to hodí — i večer nebo o víkendu. Vy nemusíte nic řešit.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🔔</div>
+          <h3>Automatické připomínky</h3>
+          <p>Systém sám pošle potvrzení a připomínku. Méně zapomenutých termínů a proluk v kalendáři.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🗓️</div>
+          <h3>Přehledný kalendář</h3>
+          <p>Všechny rezervace na jednom místě. Hned vidíte, kdo, kdy a na co dorazí.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">📱</div>
+          <h3>Funguje na mobilu</h3>
+          <p>Objednání i správa fungují skvěle na telefonu — pro zákazníka i pro vás.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">⚙️</div>
+          <h3>Nastavení na míru</h3>
+          <p>Služby, jejich délku, otevírací dobu i pauzy si nastavíte přesně podle svého provozu.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🔗</div>
+          <h3>Napojení na web</h3>
+          <p>Rezervace propojíme přímo s vaším webem, ať to ladí a zákazník nikam neodbíhá.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section section--alt" id="jak">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Jak to funguje</span>
+        <h2>Od nastavení k plnému diáři ve 4 krocích</h2>
+        <p class="section__sub">Jednou nastavíte, a pak už se objednávky sbírají samy.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="step__n">01</span><h3>Vyberete služby a časy</h3><p>Nastavíme služby, jejich délku a vaši dostupnost. Jednou — a pak už to jede.</p></div>
+        <div class="step reveal"><span class="step__n">02</span><h3>Zákazník se objedná</h3><p>Na webu si vybere termín a potvrdí. Zabere mu to jen pár kliknutí.</p></div>
+        <div class="step reveal"><span class="step__n">03</span><h3>Dorazí připomínka</h3><p>Systém pošle potvrzení i připomínku, aby na termín nikdo nezapomněl.</p></div>
+        <div class="step reveal"><span class="step__n">04</span><h3>Vy jen přijímáte</h3><p>Plný diář bez telefonování. V kalendáři vidíte vše na jeden pohled.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta" id="kontakt">
+    <div class="cta__glow"></div>
+    <div class="container cta__inner" style="grid-template-columns:1fr;text-align:center;max-width:720px">
+      <div class="cta__text reveal">
+        <span class="eyebrow">Rezervace na vašem webu</span>
+        <h2>Chcete, aby se k vám zákazníci objednávali sami?</h2>
+        <p>Mrkněte na rezervační systém v akci, nebo nám napište — napojíme ho přímo na váš web.</p>
+        <div class="hero__cta" style="justify-content:center;margin-bottom:0">
+          <a href="https://objednejme.cz" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Prohlédnout systém →</a>
+          <a href="index.html#kontakt" class="btn btn--ghost btn--lg">Nezávazně poptat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="brand"><span class="brand__mark">W</span><span class="brand__text">WebDesign<strong>Hub</strong></span></a>
+        <p>Tvoříme weby, které vydělávají. Pro malé firmy a živnostníky po celé ČR.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Služby</h4>
+        <a href="index.html#sluzby">Tvorba webů</a>
+        <a href="index.html#sluzby">Tvorba e-shopů</a>
+        <a href="index.html#sluzby">Modernizace webů</a>
+        <a href="rezervace.html">Rezervační systémy</a>
+      </div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <a href="tel:+420723083710">+420 723 083 710</a>
+        <a href="tel:+420604570520">+420 604 570 520</a>
+        <a href="mailto:info@webdesignhub.cz">info@webdesignhub.cz</a>
+        <a>Brozany 2, Staré Hradiště, Pardubice</a>
+        <a>IČO: 19297386</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> WebDesignHub. Všechna práva vyhrazena.</p>
+    </div>
+  </footer>
+
+  <!-- ===== Cookie lišta (souhlas s měřením) ===== -->
+  <div class="cookie" id="cookie" role="dialog" aria-label="Souhlas s cookies" hidden>
+    <p class="cookie__text">Tento web používá cookies k anonymnímu měření návštěvnosti (Google Analytics), abychom ho mohli vylepšovat. Měřit začneme jen s vaším souhlasem.</p>
+    <div class="cookie__btns">
+      <button type="button" class="btn btn--ghost btn--sm" id="cookieDecline">Odmítnout</button>
+      <button type="button" class="btn btn--primary btn--sm" id="cookieAccept">Přijmout</button>
+    </div>
+  </div>
+
+  <script src="assets/main.js?v=auto"></script>
+</body>
+</html>
