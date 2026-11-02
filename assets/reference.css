@@ -1,0 +1,102 @@
+/* ===== Podstránka: Reference =====
+   Vlastní komponenty (prefix rf-), pozadí a barvy přebírá ze style.css */
+
+/* ===== Hero ===== */
+.rf-hero{ position:relative; padding:150px 0 10px; text-align:center; overflow:hidden; }
+.rf-hero h1{ max-width:920px; margin:0 auto 22px; font-size:clamp(2.2rem,5vw,4rem); font-weight:800; }
+.rf-hero__lead{ max-width:640px; margin:0 auto; color:var(--muted); font-size:clamp(1.02rem,1.5vw,1.18rem); }
+.rf-badge{ display:inline-flex; align-items:center; gap:9px; padding:7px 15px 7px 9px; margin-bottom:24px;
+  border-radius:999px; border:1px solid rgba(109,92,255,.4); background:rgba(109,92,255,.1);
+  font-size:.86rem; font-weight:500; color:#cfc9ff; }
+.rf-badge__ico{ width:24px; height:24px; display:grid; place-items:center; border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2)); font-size:.75rem; }
+
+/* lišta okna prohlížeče */
+.rf-bar{ display:flex; align-items:center; gap:12px; height:34px; padding:0 14px;
+  background:#151829; border-bottom:1px solid var(--line-soft); }
+.rf-bar__dots{ display:flex; gap:6px; }
+.rf-bar__dots i{ width:9px; height:9px; border-radius:50%; background:#2a2f47; }
+.rf-url{ display:flex; align-items:center; justify-content:center; gap:6px; flex:1; max-width:60%; height:21px; margin:0 auto;
+  border-radius:6px; background:#0d0f19; color:var(--faint); font-size:.72rem; white-space:nowrap; overflow:hidden; }
+.rf-url svg{ width:10px; height:10px; flex:none; fill:none; stroke:currentColor; stroke-width:2.4; }
+.rf-bar__end{ width:45px; }
+
+/* ===== Projekty ===== */
+.rf-projects{ display:grid; gap:150px; padding-block:90px 130px; }
+.rf-project{ display:grid; grid-template-columns:1.22fr .78fr; gap:72px; align-items:center; }
+.rf-project--flip{ grid-template-columns:.78fr 1.22fr; }
+.rf-project--flip .rf-device{ order:2; }
+
+.rf-device{ position:relative; isolation:isolate; padding:0 7% 10% 0; cursor:ns-resize; }
+.rf-project--flip .rf-device{ padding:0 0 10% 7%; }
+.rf-device::before{ content:""; position:absolute; inset:0 6% 8% 0; z-index:-1; pointer-events:none;
+  background:radial-gradient(closest-side, rgba(109,92,255,.33), transparent); transform:scale(1.15); }
+
+.rf-browser{ border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#0f111b;
+  box-shadow:0 50px 90px -40px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.04); }
+.rf-screen{ position:relative; overflow:hidden; aspect-ratio:16/10; background:#fff; }
+.rf-screen img{ display:block; width:100%; height:auto; transform:translateY(0);
+  transition:transform 1.1s var(--ease); will-change:transform; }
+.rf-device:hover .rf-screen img,
+.rf-device.is-play .rf-screen img{ transform:translateY(var(--shift,0px));
+  transition-duration:var(--dur,6s); transition-timing-function:cubic-bezier(.45,.05,.55,.95); }
+
+.rf-phone{ position:absolute; right:0; bottom:0; z-index:2; width:25%; padding:6px; border-radius:26px;
+  background:#06070c; border:1px solid #2a2f47; box-shadow:0 30px 60px -20px rgba(0,0,0,.9); }
+.rf-project--flip .rf-phone{ right:auto; left:0; }
+.rf-phone::before{ content:""; position:absolute; top:12px; left:50%; z-index:2; width:28%; height:8px;
+  border-radius:99px; background:#06070c; transform:translateX(-50%); }
+.rf-phone .rf-screen{ aspect-ratio:9/19.5; border-radius:20px; }
+
+.rf-hint{ position:absolute; left:50%; bottom:16px; z-index:2; display:flex; align-items:center; gap:8px; padding:8px 15px;
+  border-radius:999px; background:rgba(10,11,18,.86); color:#fff; font-size:.8rem; font-weight:500; white-space:nowrap;
+  transform:translateX(-50%); pointer-events:none; transition:opacity .35s; box-shadow:0 10px 30px -10px rgba(0,0,0,.6); }
+.rf-device:hover .rf-hint{ opacity:0; }
+@media (hover:none){ .rf-hint{ display:none; } }
+
+/* text projektu */
+.rf-meta{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.rf-tag{ display:inline-flex; align-items:center; gap:8px; padding:6px 13px; border-radius:999px;
+  border:1px solid var(--line); background:rgba(255,255,255,.03); color:var(--muted); font-size:.82rem; }
+.rf-tag i{ width:8px; height:8px; border-radius:50%; background:var(--tone,var(--accent)); box-shadow:0 0 10px var(--tone,var(--accent)); }
+.rf-project h2{ margin-bottom:14px; font-size:clamp(1.8rem,3.2vw,2.6rem); word-spacing:.08em; }
+.rf-project__desc{ margin-bottom:26px; color:var(--muted); font-size:1.04rem; }
+.rf-feats{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:12px 18px; margin-bottom:32px; }
+.rf-feats li{ display:flex; align-items:center; gap:10px; font-size:.95rem; font-weight:500; line-height:1.35; }
+.rf-feats svg{ width:24px; height:24px; padding:5px; flex:none; border-radius:8px; background:rgba(34,211,238,.12);
+  fill:none; stroke:var(--accent); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
+
+/* ===== Závěrečná výzva ===== */
+.rf-cta{ padding:0 0 120px; }
+.rf-cta__box{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center; padding:54px 58px;
+  border-radius:30px; border:1px solid transparent;
+  background:
+    linear-gradient(135deg, rgba(23,20,48,.97), rgba(13,15,25,.97)) padding-box,
+    linear-gradient(120deg, var(--brand), var(--brand-2), var(--accent)) border-box;
+  box-shadow:0 40px 90px -45px rgba(109,92,255,.7); }
+.rf-cta__box h2{ margin-bottom:12px; font-size:clamp(1.8rem,3.4vw,2.6rem); }
+.rf-cta__box p{ max-width:520px; color:var(--muted); font-size:1.06rem; }
+.rf-cta__btns{ display:flex; flex-direction:column; gap:12px; min-width:250px; }
+
+/* ===== Responzivita ===== */
+@media (max-width:960px){
+  .rf-projects{ gap:110px; padding-top:70px; }
+  .rf-project, .rf-project--flip{ grid-template-columns:1fr; gap:44px; }
+  .rf-project--flip .rf-device{ order:0; }
+  .rf-cta__box{ grid-template-columns:1fr; gap:30px; padding:44px 36px; }
+  .rf-cta__btns{ flex-direction:row; flex-wrap:wrap; min-width:0; }
+}
+@media (max-width:620px){
+  .rf-bar{ height:26px; padding:0 10px; }
+  .rf-bar__dots i{ width:7px; height:7px; }
+  .rf-url{ height:16px; font-size:.62rem; }
+  .rf-phone{ width:31%; padding:4px; border-radius:18px; }
+  .rf-phone .rf-screen{ border-radius:14px; }
+  .rf-phone::before{ top:8px; height:6px; }
+  .rf-feats{ grid-template-columns:1fr; }
+  .rf-cta__box{ padding:38px 24px; }
+  .rf-cta__btns .btn{ width:100%; }
+}
+@media (prefers-reduced-motion:reduce){
+  .rf-screen img{ transition:none; }
+}

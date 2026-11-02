@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Consent Mode v2 (výchozí: odmítnuto) + GA4 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    // obnovit dřívější souhlas z tohoto prohlížeče
+    try {
+      if (localStorage.getItem('wdh_consent') === 'granted') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted', 'ad_user_data': 'granted',
+          'ad_personalization': 'granted', 'analytics_storage': 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NW5BPCKP9"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-8NW5BPCKP9');
+  </script>
+
+  <title>Reference — weby, které jsme vytvořili | WebDesignHub</title>
+  <meta name="description" content="Prohlédněte si weby, které jsme navrhli pro naše klienty: barbershop, masážní studio i úklidovou firmu. Projeďte si každý web celý, na počítači i na mobilu." />
+  <link rel="canonical" href="https://webdesignhub.cz/reference.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="WebDesignHub" />
+  <meta name="theme-color" content="#6d5cff" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="cs_CZ" />
+  <meta property="og:site_name" content="WebDesignHub" />
+  <meta property="og:title" content="Reference WebDesignHub — weby, které přivádějí zákazníky" />
+  <meta property="og:description" content="Prohlédněte si weby, které jsme navrhli pro naše klienty. Každý web jiný, cíl vždy stejný: přivést zákazníky." />
+  <meta property="og:url" content="https://webdesignhub.cz/reference.html" />
+  <meta property="og:image" content="https://webdesignhub.cz/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="WebDesignHub — reference" />
+
+  <!-- Twitter/X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reference WebDesignHub — weby, které přivádějí zákazníky" />
+  <meta name="twitter:description" content="Prohlédněte si weby, které jsme navrhli pro naše klienty." />
+  <meta name="twitter:image" content="https://webdesignhub.cz/og-image.jpg" />
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css?v=auto" />
+  <link rel="stylesheet" href="assets/reference.css?v=auto" />
+
+  <!-- Strukturovaná data: drobečky -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Úvod", "item": "https://webdesignhub.cz/" },
+      { "@type": "ListItem", "position": 2, "name": "Reference", "item": "https://webdesignhub.cz/reference.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== Animated background ===== -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__grid"></div>
+    <div class="bg__aurora bg__aurora--1"></div>
+    <div class="bg__aurora bg__aurora--2"></div>
+    <div class="bg__aurora bg__aurora--3"></div>
+    <canvas class="bg__canvas" id="fx"></canvas>
+    <div class="bg__noise"></div>
+    <div class="bg__spot" id="spot"></div>
+  </div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__mark">W</span>
+        <span class="brand__text">WebDesign<strong>Hub</strong></span>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html#sluzby">Služby</a>
+        <a href="index.html#proces">Jak to probíhá</a>
+        <a href="index.html#cenik">Ceník</a>
+        <a href="reference.html" aria-current="page">Reference</a>
+        <a href="rezervace.html">Rezervační systém</a>
+        <a href="index.html#kontakt" class="btn btn--sm btn--primary">Nezávazná poptávka</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="rf-hero" id="top">
+    <div class="container">
+      <span class="rf-badge reveal"><span class="rf-badge__ico">★</span> Reference</span>
+      <h1 class="reveal">Každý web jiný, cíl vždy stejný: <span class="grad">přivést zákazníky</span></h1>
+      <p class="rf-hero__lead reveal">
+        Podívejte se na weby, které jsme pro klienty navrhli a spustili. Najeďte na náhled
+        a projeďte si celý web, na počítači i na mobilu.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Projekty ===== -->
+  <div class="container rf-projects">
+
+    <article class="rf-project" id="thedrop" style="--tone:#c9a35a">
+      <div class="rf-device reveal">
+        <div class="rf-browser">
+          <div class="rf-bar" aria-hidden="true"><span class="rf-bar__dots"><i></i><i></i><i></i></span><span class="rf-url"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>thedropbs.cz</span><span class="rf-bar__end"></span></div>
+          <div class="rf-screen">
+            <img src="assets/img/ref/thedrop-desktop.webp" alt="Web The Drop Barber Shop na počítači" width="1080" height="4016" loading="lazy" />
+            <span class="rf-hint">↕ Najeďte myší a projeďte celý web</span>
+          </div>
+        </div>
+        <div class="rf-phone">
+          <div class="rf-screen"><img src="assets/img/ref/thedrop-mobile.webp" alt="Web The Drop Barber Shop na mobilu" width="488" height="11610" loading="lazy" /></div>
+        </div>
+      </div>
+      <div class="rf-project__text reveal">
+        <div class="rf-meta"><span class="rf-tag"><i></i> Barbershop</span><span class="rf-tag">Pardubice</span></div>
+        <h2>The Drop Barber Shop</h2>
+        <p class="rf-project__desc">Barbershop, kde hodně záleží na atmosféře a lidech. Web proto staví na fotkách podniku a celého týmu, aby si zákazník barbera vybral ještě před návštěvou a jedním klikem si rovnou zarezervoval termín.</p>
+        <ul class="rf-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Napojení na online rezervace</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Představení týmu barberů</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Přehled služeb</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Kontaktní formulář a mapa</li>
+        </ul>
+        <a href="https://thedropbs.cz" target="_blank" rel="noopener" class="btn btn--ghost">Navštívit web ↗</a>
+      </div>
+    </article>
+
+    <article class="rf-project rf-project--flip" id="ems" style="--tone:#1fa3b5">
+      <div class="rf-device reveal">
+        <div class="rf-browser">
+          <div class="rf-bar" aria-hidden="true"><span class="rf-bar__dots"><i></i><i></i><i></i></span><span class="rf-url"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>ems-masaze-hlinsko.cz</span><span class="rf-bar__end"></span></div>
+          <div class="rf-screen">
+            <img src="assets/img/ref/ems-desktop.webp" alt="Web EMS &amp; Massage Studio na počítači" width="1080" height="3689" loading="lazy" />
+            <span class="rf-hint">↕ Najeďte myší a projeďte celý web</span>
+          </div>
+        </div>
+        <div class="rf-phone">
+          <div class="rf-screen"><img src="assets/img/ref/ems-mobile.webp" alt="Web EMS &amp; Massage Studio na mobilu" width="488" height="9295" loading="lazy" /></div>
+        </div>
+      </div>
+      <div class="rf-project__text reveal">
+        <div class="rf-meta"><span class="rf-tag"><i></i> Masáže a EMS trénink</span><span class="rf-tag">Hlinsko</span></div>
+        <h2>EMS &amp; Massage Studio</h2>
+        <p class="rf-project__desc">Studio nabízí několik druhů masáží i EMS trénink. Web pomáhá zákazníkovi se v nich rychle zorientovat: každá služba má svůj popis a vlastní tlačítko k rezervaci, takže objednání zabere pár vteřin.</p>
+        <ul class="rf-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Online rezervace u každé služby</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Přehledné služby s popisem</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Ceník</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Kontakty a otevírací doba</li>
+        </ul>
+        <a href="https://ems-masaze-hlinsko.cz" target="_blank" rel="noopener" class="btn btn--ghost">Navštívit web ↗</a>
+      </div>
+    </article>
+
+    <article class="rf-project" id="teduklizeno" style="--tone:#2cc4a8">
+      <div class="rf-device reveal">
+        <div class="rf-browser">
+          <div class="rf-bar" aria-hidden="true"><span class="rf-bar__dots"><i></i><i></i><i></i></span><span class="rf-url"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>teduklizeno.cz</span><span class="rf-bar__end"></span></div>
+          <div class="rf-screen">
+            <img src="assets/img/ref/teduklizeno-desktop.webp" alt="Web Teď uklizeno na počítači" width="1080" height="2074" loading="lazy" />
+            <span class="rf-hint">↕ Najeďte myší a projeďte celý web</span>
+          </div>
+        </div>
+        <div class="rf-phone">
+          <div class="rf-screen"><img src="assets/img/ref/teduklizeno-mobile.webp" alt="Web Teď uklizeno na mobilu" width="488" height="5638" loading="lazy" /></div>
+        </div>
+      </div>
+      <div class="rf-project__text reveal">
+        <div class="rf-meta"><span class="rf-tag"><i></i> Úklidové služby</span><span class="rf-tag">Hrochův Týnec</span></div>
+        <h2>Teď uklizeno</h2>
+        <p class="rf-project__desc">Úklidová firma pro domácnosti i firmy. Web jasně ukazuje, co všechno uklidí, jak spolupráce probíhá a kolik to stojí, aby zákazník neváhal a rovnou poslal poptávku.</p>
+        <ul class="rf-feats">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Služby pro domácnosti i firmy</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Ceník</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Postup spolupráce krok za krokem</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> Nezávazná poptávka</li>
+        </ul>
+        <a href="https://teduklizeno.cz" target="_blank" rel="noopener" class="btn btn--ghost">Navštívit web ↗</a>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ===== Závěrečná výzva ===== -->
+  <section class="rf-cta" id="kontakt">
+    <div class="container">
+      <div class="rf-cta__box reveal">
+        <div>
+          <span class="eyebrow">Další na řadě</span>
+          <h2>Váš web může být další</h2>
+          <p>Návrh vám připravíme zdarma. Pokračujeme, teprve když se vám bude líbit.</p>
+        </div>
+        <div class="rf-cta__btns">
+          <a href="index.html#kontakt" class="btn btn--primary btn--lg">Chci návrh zdarma</a>
+          <a href="index.html#cenik" class="btn btn--ghost btn--lg">Prohlédnout ceník</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="brand"><span class="brand__mark">W</span><span class="brand__text">WebDesign<strong>Hub</strong></span></a>
+        <p>Tvoříme weby, které vydělávají. Pro malé firmy a živnostníky po celé ČR.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Služby</h4>
+        <a href="index.html#sluzby">Tvorba webů</a>
+        <a href="index.html#sluzby">Tvorba e-shopů</a>
+        <a href="index.html#sluzby">Modernizace webů</a>
+        <a href="rezervace.html">Rezervační systémy</a>
+      </div>
+      <div class="footer__col">
+        <h4>Kontakt</h4>
+        <a href="tel:+420723083710">+420 723 083 710</a>
+        <a href="tel:+420604570520">+420 604 570 520</a>
+        <a href="mailto:info@webdesignhub.cz">info@webdesignhub.cz</a>
+        <a>Brozany 2, Staré Hradiště, Pardubice</a>
+        <a>IČO: 19297386</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> WebDesignHub. Všechna práva vyhrazena.</p>
+    </div>
+  </footer>
+
+  <!-- ===== Cookie lišta (souhlas s měřením) ===== -->
+  <div class="cookie" id="cookie" role="dialog" aria-label="Souhlas s cookies" hidden>
+    <p class="cookie__text">Tento web používá cookies k anonymnímu měření návštěvnosti (Google Analytics), abychom ho mohli vylepšovat. Měřit začneme jen s vaším souhlasem.</p>
+    <div class="cookie__btns">
+      <button type="button" class="btn btn--ghost btn--sm" id="cookieDecline">Odmítnout</button>
+      <button type="button" class="btn btn--primary btn--sm" id="cookieAccept">Přijmout</button>
+    </div>
+  </div>
+
+  <script src="assets/main.js?v=auto"></script>
+  <script src="assets/reference.js?v=auto"></script>
+</body>
+</html>
